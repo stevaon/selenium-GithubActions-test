@@ -27,7 +27,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: 'python run'
       env:
-        latitude: ${{ secrets.laitude }}
+        latitude: ${{ secrets.latitude }}
         longitude: ${{ secrets.longitude }}
       run: |
         python main.py
