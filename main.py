@@ -2,13 +2,16 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 import time
+import os
 
+env_dist = os.environ
 position = dict({
-        "latitude":  34.226692,
-        "longitude": 108.954232,
+        "latitude":  float(env_dist['latitude']),
+        "longitude": float(env_dist['longitude']),
         "accuracy": 100
         })
-
+        
+print(position)
 chrome_option = Options()
 
 chrome_option.add_argument('--headless')
