@@ -6,8 +6,8 @@ import os
 
 env_dist = os.environ
 position = dict({
-        "latitude":  float(env_dist['latitude']),
-        "longitude": float(env_dist['longitude']),
+        "latitude":  env_dist['latitude'],
+        "longitude": env_dist['longitude'],
         "accuracy": 100
         })
         
