@@ -3,7 +3,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 import time
 import os
-
+ 
 env_dist = os.environ
 position = dict({
         "latitude":  env_dist['latitude'],
