@@ -17,6 +17,8 @@ position = dict({
         })
 username = env_dist['username']
 password = env_dist['password']
+print(username)
+print(password)
 print(position)
 
 #登录
