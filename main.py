@@ -17,35 +17,36 @@ position = dict({
         })
         
 print(position)
-chrome_option = Options()
 
-chrome_option.add_argument('--headless')
-# chrome_option.add_argument('--no-sandbox')
-# chrome_option.add_argument('window-size=1920x1080') # 指定浏览器分辨率
-chrome_option.add_argument('--disable-gpu')
-chrome_option.add_experimental_option('excludeSwitches', ['enable-automation'])
-# action端
-driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_option)
-# Actions时区使用的是UTC时间...
-driver.execute_cdp_cmd(
-'Emulation.setTimezoneOverride',{
-'timezoneId': 'Asia/Shanghai'
-})
 #登录
 output_data = ""
 url_login='https://ids.chd.edu.cn/authserver/login?service=http%3A%2F%2Fcdjk.chd.edu.cn%2FhealthPunch%2Findex%2Flogin'
 flag = True
 while flag:
+    chrome_option = Options()
+
+    chrome_option.add_argument('--headless')
+    # chrome_option.add_argument('--no-sandbox')
+    # chrome_option.add_argument('window-size=1920x1080') # 指定浏览器分辨率
+    chrome_option.add_argument('--disable-gpu')
+    chrome_option.add_experimental_option('excludeSwitches', ['enable-automation'])
+    # action端
+    driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_option)
+    # Actions时区使用的是UTC时间...
+    driver.execute_cdp_cmd(
+    'Emulation.setTimezoneOverride',{
+    'timezoneId': 'Asia/Shanghai'
+    })
     driver.get(url_login)
     time.sleep(2)
-    driver.find_element_by_xpath('//*[@id="username"]').send_keys("2020226068")
+    driver.find_element_by_xpath('//*[@id="username"]').send_keys(env_dist['username'])
     time.sleep(1)
-    driver.find_element_by_xpath('//*[@id="password"]').send_keys("CHD055117",Keys.ENTER)
+    driver.find_element_by_xpath('//*[@id="password"]').send_keys(env_dist['password'],Keys.ENTER)
     time.sleep(3)
     cur_title = driver.title
     if cur_title == "每日健康打卡":
         print(cur_title)
-        # flag = False
+        flag = False
         break
     print("成功")
 driver.command_executor._commands['set_permission'] = (
