@@ -34,9 +34,9 @@ flag = True
 while flag:
     driver.get(url_login)
     time.sleep(2)
-    driver.find_element_by_xpath('//*[@id="username"]').send_keys(username)
+    driver.find_element_by_xpath('//*[@id="username"]').send_keys("2020226068")
     time.sleep(1)
-    driver.find_element_by_xpath('//*[@id="password"]').send_keys(password,Keys.ENTER)
+    driver.find_element_by_xpath('//*[@id="password"]').send_keys("CHD055117",Keys.ENTER)
     time.sleep(3)
     cur_title = driver.title
     if cur_title == "每日健康打卡":
