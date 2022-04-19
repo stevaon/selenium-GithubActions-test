@@ -48,7 +48,7 @@ while flag:
         print(cur_title)
         flag = False
         break
-    print("成功")
+    print("成功") 
 driver.command_executor._commands['set_permission'] = (
 'POST', '/session/$sessionId/permissions')
 print("driver.command_executor._commands is successful")
