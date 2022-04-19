@@ -42,9 +42,9 @@ while flag:
     
     driver.get(url_login)
     time.sleep(2)
-    driver.find_element_by_xpath('//*[@id="username"]').send_keys(username)
+    driver.find_element(By.XPATH, '//*[@id="username"]').send_keys(username)
     time.sleep(1)
-    driver.find_element_by_xpath('//*[@id="password"]').send_keys(password, Keys.ENTER)
+    driver.find_element(By.XPATH, '//*[@id="password"]').send_keys(password,Keys.ENTER)
     time.sleep(3)
     cur_title = driver.title
     print(cur_title)
