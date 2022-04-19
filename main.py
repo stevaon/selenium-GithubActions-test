@@ -44,7 +44,7 @@ while flag:
     time.sleep(3)
     cur_title = driver.title
     if cur_title == "每日健康打卡":
-        print(cur_titile)
+        print(cur_title)
         # flag = False
         break
     print("成功")
