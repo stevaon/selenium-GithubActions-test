@@ -20,8 +20,8 @@ print(position)
 chrome_option = Options()
 
 chrome_option.add_argument('--headless')
-chrome_option.add_argument('--no-sandbox')
-chrome_option.add_argument('window-size=1920x1080') # 指定浏览器分辨率
+# chrome_option.add_argument('--no-sandbox')
+# chrome_option.add_argument('window-size=1920x1080') # 指定浏览器分辨率
 chrome_option.add_argument('--disable-gpu')
 chrome_option.add_experimental_option('excludeSwitches', ['enable-automation'])
 # action端
@@ -44,7 +44,9 @@ while flag:
     time.sleep(3)
     cur_title = driver.title
     if cur_title == "每日健康打卡":
-        flag = False
+        print(cur_titile)
+        # flag = False
+        break
     print("成功")
 driver.command_executor._commands['set_permission'] = (
 'POST', '/session/$sessionId/permissions')
