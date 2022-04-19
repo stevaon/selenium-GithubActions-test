@@ -22,9 +22,26 @@ chrome_option.add_argument('--disable-gpu')
 chrome_option.add_experimental_option('excludeSwitches', ['enable-automation'])
 # action端
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_option)
-
-driver.get("https://www.baidu.com/")
-# 伪装地址
+# Actions时区使用的是UTC时间...
+driver.execute_cdp_cmd(
+'Emulation.setTimezoneOverride',{
+'timezoneId': 'Asia/Shanghai'
+})
+#登录
+output_data = ""
+url_login='https://ids.chd.edu.cn/authserver/login?service=http%3A%2F%2Fcdjk.chd.edu.cn%2FhealthPunch%2Findex%2Flogin'
+flag = True
+while flag:
+    driver.get(url_login)
+    time.sleep(2)
+    driver.find_element_by_xpath('//*[@id="username"]').send_keys(username)
+    time.sleep(1)
+    driver.find_element_by_xpath('//*[@id="password"]').send_keys(password,Keys.ENTER)
+    time.sleep(3)
+    cur_title = driver.title
+    if cur_title == "每日健康打卡":
+        flag = False
+    print("成功")
 driver.command_executor._commands['set_permission'] = (
 'POST', '/session/$sessionId/permissions')
 print("driver.command_executor._commands is successful")
