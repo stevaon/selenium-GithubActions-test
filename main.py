@@ -17,16 +17,10 @@ position = dict({
         })
 username = env_dist['username']
 password = env_dist['password']
-print(username)
-print(password)
+# print(username)
+# print(password)
 print(position)
-
-#登录
-output_data = ""
-url_login='https://ids.chd.edu.cn/authserver/login?service=http%3A%2F%2Fcdjk.chd.edu.cn%2FhealthPunch%2Findex%2Flogin'
-flag = True
-while flag:
-    chrome_option = Options()
+chrome_option = Options()
 
     chrome_option.add_argument('--headless')
     # chrome_option.add_argument('--no-sandbox')
@@ -40,6 +34,12 @@ while flag:
     'Emulation.setTimezoneOverride',{
     'timezoneId': 'Asia/Shanghai'
     })
+#登录
+output_data = ""
+url_login='https://ids.chd.edu.cn/authserver/login?service=http%3A%2F%2Fcdjk.chd.edu.cn%2FhealthPunch%2Findex%2Flogin'
+flag = True
+while flag:
+    
     driver.get(url_login)
     time.sleep(2)
     driver.find_element_by_xpath('//*[@id="username"]').send_keys(username)
@@ -47,6 +47,7 @@ while flag:
     driver.find_element_by_xpath('//*[@id="password"]').send_keys(password, Keys.ENTER)
     time.sleep(3)
     cur_title = driver.title
+    print(cur_title)
     if cur_title == "每日健康打卡":
         print(cur_title)
         flag = False
