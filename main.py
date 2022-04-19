@@ -15,7 +15,8 @@ position = dict({
         "longitude": float(env_dist['longitude']),
         "accuracy": 100
         })
-        
+username = env_dist['username']
+password = env_dist['password']
 print(position)
 
 #登录
@@ -39,9 +40,9 @@ while flag:
     })
     driver.get(url_login)
     time.sleep(2)
-    driver.find_element_by_xpath('//*[@id="username"]').send_keys(env_dist['username'])
+    driver.find_element_by_xpath('//*[@id="username"]').send_keys(username)
     time.sleep(1)
-    driver.find_element_by_xpath('//*[@id="password"]').send_keys(env_dist['password'],Keys.ENTER)
+    driver.find_element_by_xpath('//*[@id="password"]').send_keys(password, Keys.ENTER)
     time.sleep(3)
     cur_title = driver.title
     if cur_title == "每日健康打卡":
