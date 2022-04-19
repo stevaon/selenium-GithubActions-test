@@ -29,11 +29,6 @@ chrome_option.add_argument('--disable-gpu')
 chrome_option.add_experimental_option('excludeSwitches', ['enable-automation'])
 # action端
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_option)
-# Actions时区使用的是UTC时间...
-driver.execute_cdp_cmd(
-'Emulation.setTimezoneOverride',{
-'timezoneId': 'Asia/Shanghai'
-})
 #登录
 output_data = ""
 url_login='https://ids.chd.edu.cn/authserver/login?service=http%3A%2F%2Fcdjk.chd.edu.cn%2FhealthPunch%2Findex%2Flogin'
